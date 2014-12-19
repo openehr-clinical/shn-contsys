@@ -1,0 +1,114 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.health_thread_contsys.v1
+
+concept
+	[at0000]	-- Health thread (Contsys)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Ian McNicoll">
+		["organisation"] = <"HANDIHealth,UK">
+		["email"] = <"ian@handihealth.org">
+		["date"] = <"2014-12-09">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record details of a health thread aligned to the Contsys definition.
+
+A Health Thread represents the root of a tree-like structure of linked Health Issues each of which may be linked to one or more child 'branch 'Health Issues or to a 'leaf' HealthCare Matter (any ENTRY in openEHR).
+
+Health Thread
+   Health Issue A
+     Healthcare Matter
+     Health Issue A.1
+       Healthcare Matter
+       Healthcare Matter
+  Health Issue B
+       Healthcare Matter
+       Healthcare Matter
+">
+			use = <"Reference Model LINKS at root archetype level should be used to associate one or more Health Issues with this parent Health Thread.">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"E6A4B4B12514ABE5BA2DEC7D24882C19">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Health thread (Contsys)
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Thread name
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Thread type
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007, 	-- Problem list
+									at0008, 	-- Clinical process interest
+									at0009]	-- Condition evolution
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Date assessed
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Health thread (Contsys)">
+					description = <"Health thread aligned to the contsyss definition">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					description = <"The name of the health thread.">
+					text = <"Thread name">
+					comment = <"e.g. \"patient problem list\", \"relevant issues\"">
+				>
+				["at0003"] = <
+					text = <"Thread type">
+					description = <"The type of Health Thread, as described in Contsys.">
+				>
+				["at0006"] = <
+					text = <"Date assessed">
+					description = <"The date at which the Health thread was originally opened or re-assessed.">
+				>
+				["at0007"] = <
+					text = <"Problem list">
+					description = <"The health thread represents a problem list.">
+				>
+				["at0008"] = <
+					text = <"Clinical process interest">
+					description = <"The health thread represents a set of Healthcare matters which relate to a clinical process.">
+				>
+				["at0009"] = <
+					text = <"Condition evolution">
+					description = <"The health thread represents a group of Healthcare matters which relate to the evolution of a Health Condition.">
+				>
+			>
+		>
+	>
