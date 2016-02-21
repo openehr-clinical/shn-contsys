@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.health_thread_contsys.v1
 
 concept
-	[at0000]	-- Health thread (Contsys)
+	[at0000]	-- Helsetråd (Contsys)
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Bjørn Næss">
+				["email"] = <"bna@dips.no">
+				["organisation"] = <"DIPS ASA">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Ian McNicoll">
@@ -33,36 +43,57 @@ Health Thread
 			misuse = <"">
 			copyright = <"">
 		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere detaljer om en helsetråd tilpsasset Contsys definisjonen. 
+
+En helsetråd representerer rota av en trestruktur med lenkede helseproblemer. Hver av disse kan være lenket som en eller flere underproblemer som helseproblemer eller helseforhold (enhver ENTRY i openEHR)
+
+Helsetråd 
+   Helseproblem A
+     Helseforhold 
+     Helseproblem A.1 
+       Helseforhold 
+       Helseforhold 
+  Helseproblem B
+       Helseforhold 
+       Helseforhold 
+">
+			use = <"Benytt LINKS fra referansemodellen på rot arketypen for å assossiere en eller flere helseproblem knyttet til denne rot helsetråden. ">
+			misuse = <"*(en)">
+			copyright = <"">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"126F830E15540CBEFFE79F0A2C94E329">
+		["MD5-CAM-1.0.1"] = <"62F8AC1389285F22A51BC130BDF0FC50">
+		["references"] = <"See: https://contsys.org/concept/health_thread ">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Health thread (Contsys)
+	EVALUATION[at0000] matches {	-- Helsetråd (Contsys)
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Thread name
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Helsetråd 
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Thread type
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Helsetrådtype
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0007, 	-- Problem list
-									at0008, 	-- Clinical process interest
-									at0009]	-- Condition evolution
+									at0007, 	-- Problemliste
+									at0008, 	-- Klinisk prosess 
+									at0009]	-- Utvikling av tilstand
 								}
 							}
 						}
 					}
-					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Date assessed
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Åpningsdato
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
@@ -108,6 +139,43 @@ ontology
 				["at0009"] = <
 					text = <"Condition evolution">
 					description = <"The health thread represents a group of Healthcare matters which relate to the evolution of a Health Condition.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Helsetråd (Contsys)">
+					description = <"Helsetråd tilpasset begrepet i Contsys ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Helsetråd ">
+					description = <"Navnet på helsetråden. ">
+					comment = <"*e.g. \"patient problem list\", \"relevant issues\"(en)">
+				>
+				["at0003"] = <
+					text = <"Helsetrådtype">
+					description = <"Angir typen av helsetråd som beskrevet i Constys. ">
+				>
+				["at0006"] = <
+					text = <"Åpningsdato">
+					description = <"Datoen da denne helsetråden var åpnet første gang eller gjenåpnet. ">
+				>
+				["at0007"] = <
+					text = <"Problemliste">
+					description = <"Helsetråden representerer en problemliste.">
+				>
+				["at0008"] = <
+					text = <"Klinisk prosess ">
+					description = <"Helsetråden representerer et set av helseforhold relatert til en klinisk prosess. ">
+				>
+				["at0009"] = <
+					text = <"Utvikling av tilstand">
+					description = <"Helsetråden representerer en gruppe helseforhold relatert til utviklingen av en helsetilstand. ">
 				>
 			>
 		>
