@@ -37,6 +37,8 @@ The piece of work, part of the EU SemanticHealthnet project, explores if/how the
 
 ### Healthcare matter
 
+[Contsys - Healthcare matter](https://contsys.org/concept/healthcare_matter) 
+
 **Term:** healthcare matter
 
 **Synonym:** care matter
@@ -64,6 +66,7 @@ In openEHR, HealthCare matters included within a Health Thread will be represent
 
 
 ###Health thread
+[Contsys - Health thread](https://contsys.org/concept/health_thread )
 
 **Term:** health thread
 
@@ -111,6 +114,7 @@ e.g.
 	   Healthcare Matter`
 
 ###Health issue
+[Contsys - Health issue](https://contsys.org/concept/health_issue)
 
 **Term:** health issue
 
