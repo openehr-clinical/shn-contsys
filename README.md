@@ -9,7 +9,7 @@ The archetypes have been developed against the openEHR reference model.
 
 This work is being carried out as part of the EU SemanticHealthNet project.
 
-###Available resources
+### Available resources
 
 * docs
   * mindmaps (design documents from which archetypes and template are built)
@@ -24,7 +24,7 @@ This work is being carried out as part of the EU SemanticHealthNet project.
 A. Health Thread / Health Issue / Healthcare Matter
 ================================================
 
-##Overview
+## Overview
 
 One of the more difficult constructs seen in electronic health records is the 'problem list', 'health thread' or 'health concern'. A key function of such constructs is to maintain a list (perhaps with nested lists), that pulls together potentially disparate health record items to summarise or re-phrase some aspect of the patient's current health status. 
 
@@ -96,7 +96,7 @@ In openEHR, HealthCare matters included within a Health Thread will be represent
 
 * Type 2 diabetes treated by a GP, a nurse, an endocrinologist
 
-####openEHR alignment notes
+#### openEHR alignment notes
 
 **Aligns to:** new EVALUATION 'Health Thread' archetype
 
@@ -126,11 +126,11 @@ e.g.
 
 ####openEHR alignment notes
 
-Aligns to : new EVALUATION Health Issue archetype
+Aligns to: new EVALUATION Health Issue archetype
 
 The Contsys definition has been interpreted such that Health Issue is equivalent to HL7 Health concern i.e. it represents a meta-wrapper around one or more existing clinical record entries, grouping or nesting them in ways which help elucidate progression of an illness, relationship to a clinical process or summarise a patients overall health status. Each health issue must have a name, often coded, may have optional start and end dates and allows status to be carried as active, inactive or closed, in alignment with LL Weed's original POMR paradigm.
 
-Each Health Issue is realted to its parent Health Thread via a LINK pointing to its root archetype node. The Health Issue itself uses LINKS to assert relationships between itself and its child ENTRIES. Thess can be other Health Issues but more often will be HealthCare matters.
+Each Health Issue is related to its parent Health Thread via a LINK pointing to its root archetype node. The Health Issue itself uses LINKS to assert relationships between itself and its child ENTRIES. Thess can be other Health Issues but more often will be HealthCare matters.
 
 
 Artefacts
